@@ -5,7 +5,8 @@
   "main": "web-server/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node web-server/index.js"
+    "start": "node web-server/index.js",
+    "start-dev": "nodemon web-server/index.js"
   },
   "repository": {
     "type": "git",
@@ -28,8 +29,11 @@
   },
   "homepage": "https://github.com/microspore/microspore#readme",
   "dependencies": {
-    "koa": "^2.4.1"
-  },
-  "devDependencies": {
+    "axios": "^0.17.1",
+    "faker": "^4.1.0",
+    "koa": "^2.4.1",
+    "koa-bodyparser": "^4.2.0",
+    "koa-morgan": "^1.0.1",
+    "router": "^1.3.2"
   }
 }
