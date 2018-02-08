@@ -1,3 +1,4 @@
+require('newrelic');
 const Koa = require('koa');
 const router = require('./routes.js');
 const koaBody = require('koa-bodyparser');

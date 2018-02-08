@@ -2,23 +2,23 @@ const elasticsearch = require('elasticsearch');
 const fs = require('fs');
 
 const client = new elasticsearch.Client({
-  host: 'localhost:9200',
-  log: 'trace'
+  host: 'https://search-search-woq4vbblgpi3wldq3ta7lmqnju.us-west-1.es.amazonaws.com',
+  // log: 'trace'
 });
 
 // ping the client to make sure successfully connected to elastic search db
-client.ping({
-  requestTimeout: 30000,
-}, function (error) {
-  if (error) {
-    console.error('elasticsearch cluster is down!');
-  } else {
-    console.log('All is well');
-  }
-});
+// client.ping({
+//   requestTimeout: 30000,
+// }, function (error) {
+//   if (error) {
+//     console.error('elasticsearch cluster is down!');
+//   } else {
+//     console.log('All is well');
+//   }
+// });
 
 // console.log count 
-client.count().then(res => console.log(res));
+// client.count().then(res => console.log(res));
 
 //bulk insert from ten-million-docs.txt
 const bulkInsert = async () => {

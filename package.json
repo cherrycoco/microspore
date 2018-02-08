@@ -4,11 +4,12 @@
   "description": "Scalable micro-service architecture mimicing simplified data flow for Amazon product search and product order placement",
   "main": "web-server/index.js",
   "scripts": {
-    "test": "mocha services/search/Test/test-routes.js",
+    "test": "mocha services/search/tests/test-routes.js",
     "start": "node web-server/index.js",
     "start-dev": "nodemon web-server/index.js",
     "start-search-dev": "nodemon --harmony services/search/index.js",
-    "start-search": "node web-server/index.js"
+    "start-search": "node web-server/index.js",
+    "load-test": "artillery run services/search/load-test.yml"
   },
   "repository": {
     "type": "git",
@@ -31,9 +32,12 @@
   },
   "homepage": "https://github.com/microspore/microspore#readme",
   "dependencies": {
+    "aws-sdk": "^2.190.0",
     "axios": "^0.17.1",
+    "dotenv": "^5.0.0",
     "elasticsearch": "^14.0.0",
     "faker": "^4.1.0",
+    "ioredis": "^3.2.2",
     "koa": "^2.4.1",
     "koa-bodyparser": "^4.2.0",
     "koa-morgan": "^1.0.1",
@@ -44,6 +48,7 @@
     "babel-register": "^6.26.0",
     "chai": "^4.1.2",
     "chai-http": "^3.0.0",
-    "mocha": "^5.0.0"
+    "mocha": "^5.0.0",
+    "newrelic": "^2.6.1"
   }
 }

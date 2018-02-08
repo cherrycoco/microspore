@@ -1,0 +1,39 @@
+config:
+  target: "http://localhost:3000"
+  phases:
+    - duration: 60
+      arrivalRate: 5
+      # rampTo: 100
+      name: "Warm up the application"
+    # - duration: 120
+    #   arrivalRate: 100
+    #   name: "Sustained max load"
+  variables:
+    pageNum:
+      - "1"
+      - "2"
+      - "3"
+      - "4"
+      - "5"
+      - "6"
+      - "7"
+    query:
+      - "pants handmade"
+      - "sausages gorgeous"
+      - "shirt granite"
+      - "chicken soft"
+      - "beef steel"
+      - "tomato metal"
+      - "potato soft"
+      - "hat handmade"
+scenarios:
+  - name: "Search a product"
+    flow:
+      - loop:
+        - get:
+            url: "/search/{{ pageNum }}?query={{ query }}"
+            capture:
+              json: "$.results[0]._id"
+              as: "id"
+          # - think: 10
+        count: 300

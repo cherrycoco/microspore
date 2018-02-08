@@ -16,26 +16,8 @@ const productGenerator = async () => {
   return product;
 };
 
-const dbInsert = async (startId, endId) => {
-  for (let i = startId; i <= endId; i++) {
-    let product = await productGenerator();
-    axios.put(`http://localhost:9200/products/product/${i}`, product)
-    .then(res => console.log('done'))
-    .catch(err => console.log('error from dbInsert:', err));
-  }
-}
-
-// dbInsert(0, 1000);
-// dbInsert(1001, 5000);
-// dbInsert(5001, 10000);
-// dbInsert(10001, 20000);
-// dbInsert(20001, 22000);
-// dbInsert(22001, 23000);
-// dbInsert(23001, 24000);
-// dbInsert(24001, 25000);
-
 // writestream to ten-million-docs.txt
-const wstream = fs.createWriteStream('./ten-million-docs.json');
+// const wstream = fs.createWriteStream('./ten-million-docs.json');
 
 const generateData = async (startId, endId) => {
   await wstream.write('[');
@@ -59,5 +41,6 @@ const generateData = async (startId, endId) => {
   wstream.end();
 }
 
-
-generateData(900000, 1000000);
+let x = parseInt(process.argv[2]);
+let y = x + 90000
+// generateData(x, y);
